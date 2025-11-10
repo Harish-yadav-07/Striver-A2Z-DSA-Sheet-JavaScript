@@ -1,19 +1,15 @@
 function secondLargest(arr) {
-    if (arr.length < 2) return null; // Not enough elements
-
-    let first = -Infinity, second = -Infinity;
-
-    for (let num of arr) {
-        if (num > first) {
-            second = first;
-            first = num;
-        } else if (num > second && num < first) {
-            second = num;
+    let largest = arr[0];
+    let slargest = -1;
+    for(let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            slargest = largest;
+            largest = arr[i];
+        } else if (arr[i] < largest && arr[i] > slargest) {
+            slargest = arr[i]
         }
     }
+    return slargest;                              // time complexity -> O(n)                           
+}                                                // Space complexity -> O(1)
 
-    return second === -Infinity ? null : second;
-}
-
-// Example:
 console.log(secondLargest([10, 5, 20, 8, 20])); // Output: 10
