@@ -28,3 +28,25 @@ function majorityElement(arr) {
 const arr = [2, 2, 1, 1, 1, 2, 2];
 const ans = majorityElement(arr);
 console.log("The majority element is:", ans);
+
+// Optimal approach -> using Moore's Algorithm 
+function majorElem(arr) {
+    let elem = null;
+    let count = 0;
+    for(let i = 0; i < arr.length; i++){
+        if (count === 0) {
+            elem = arr[i];
+            count++;
+        } else if (arr[i] == elem) {                // time -> O(n)
+            count++;                                // space -> O(1)
+        } else {
+            count--;
+        }
+    }
+    let frequency = 0;
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === elem) frequency;
+    }
+    return elem;
+}
+console.log(`The majority element is: ${majorElem([7,7,5,7,5,1,5,7,5,5,7,7,5,5,5,5])}`);
